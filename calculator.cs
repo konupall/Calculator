@@ -28,8 +28,15 @@ namespace CalculatorVer0._1
             {
                 buttonName = "button" + i;
                 button = (Button)this.Controls[buttonName];
-                button.Text = i.ToString() + " (lol)";
+                button.Text = i.ToString(); // + " (lol)";
             }
+        }
+
+        private void Button_Click(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            CalcDisplay.Text += button.Text;
+            this.BackColor = Color.White;
         }
     }
 }
