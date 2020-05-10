@@ -86,7 +86,7 @@ namespace CalculatorVer0._1
             CalcDisplay.Text = s;
         }
 
-        private void buttonSign_Click(object sender, EventArgs e)
+        private void buttonSign_Click(object sender, EventArgs e) // Not finished yet
         {
             bool signchange = CalcDisplay.Text.Contains("-");
             if(!signchange)
