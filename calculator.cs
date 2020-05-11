@@ -72,6 +72,17 @@ namespace CalculatorVer0._1
             }
         }
 
+        private void UpdateDisplay()
+        {
+            if (CalcDisplay.Text == "-")
+            {
+                CalcDisplay.Text = String.Empty;
+            }
+            else
+            {
+
+            }
+        }
         private void buttonBacksp_Click(object sender, EventArgs e)
         {
             string s = CalcDisplay.Text;
@@ -85,6 +96,7 @@ namespace CalculatorVer0._1
                 // s = "0";     <-- can also use this
             }
             CalcDisplay.Text = s;
+            UpdateDisplay();
         }
 
         private void buttonSign_Click(object sender, EventArgs e) // Finished in v0.4 update
