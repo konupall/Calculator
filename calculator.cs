@@ -82,20 +82,23 @@ namespace CalculatorVer0._1
             else
             {
                 s = string.Empty;
+                // s = "0";     <-- can also use this
             }
             CalcDisplay.Text = s;
         }
 
-        private void buttonSign_Click(object sender, EventArgs e) // Not finished yet
+        private void buttonSign_Click(object sender, EventArgs e) // Finished in v0.4 update
         {
-            bool signchange = CalcDisplay.Text.Contains("-");
-            if(!signchange)
+            try // Try this
             {
-                CalcDisplay.Text += "-";
+                double number = Convert.ToDouble(CalcDisplay.Text);
+                number *= -1;
+                CalcDisplay.Text = Convert.ToString(number);
             }
-            else
+            catch // If fail (crash), do nothing (changed to my code)
             {
-                CalcDisplay.Text = string.Empty;
+                CalcDisplay.Text = "0";
+                MessageBox.Show("Error: No numbers on display", "ERROR #2", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
         }
     }
