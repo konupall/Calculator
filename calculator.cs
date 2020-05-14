@@ -18,6 +18,9 @@ namespace CalculatorVer0._1
             InitializeCalculator();
         }
 
+        Double number1 = 0;
+        Double number2 = 0;
+        string op = null;
         private void InitializeCalculator()
         {
             this.BackColor = Color.DarkMagenta;
@@ -112,6 +115,95 @@ namespace CalculatorVer0._1
                 CalcDisplay.Text = "0";
                 MessageBox.Show("Error: No numbers on display", "ERROR #2", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
+        }
+
+        private void buttonResult_Click(object sender, EventArgs e)
+        {
+            double result = 0;
+            number2 = Convert.ToDouble(CalcDisplay.Text);
+
+            if (op == "+")
+            {
+                result = number1 + number2;
+            }
+            else if (op == "-")
+            {
+                result = number1 - number2;
+            }
+            else if (op == "/")
+            {
+                result = number1 / number2;
+            }
+            else if (op == "*")
+            {
+                result = number1 * number2;
+            }
+
+            number1 = 0;
+            CalcDisplay.Text = result.ToString();
+
+            if (CalcDisplay.Text == "NaN")
+            {
+                MessageBox.Show("Error: What did you expect?", "ERROR #3", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                CalcDisplay.Text = "";
+            }
+            else;
+            {
+
+            }
+        }
+
+        private void Operation_click(object sender, EventArgs e) // All buttons (add, sub, multip, div) do this
+        {
+            Button button = (Button)sender;
+            number1 = Convert.ToDouble(CalcDisplay.Text);
+            CalcDisplay.Text = string.Empty;
+            op = button.Text;
+        }
+
+        private async void buttonOn_Click(object sender, EventArgs e) // Added this fun thing when you press the "ON" key
+        {
+            CalcDisplay.Text = "Booting Up.";
+            await Task.Delay(1000);
+            CalcDisplay.Text = "Please Wait.";
+            await Task.Delay(1000);
+            CalcDisplay.Text = "Loading...0%";
+            await Task.Delay(1000);
+            CalcDisplay.Text = "Loading...1%";
+            await Task.Delay(1000);
+            CalcDisplay.Text = "Loading...4%";
+            await Task.Delay(200);
+            CalcDisplay.Text = "Loading...5%";
+            await Task.Delay(100);
+            CalcDisplay.Text = "Loading...10%";
+            await Task.Delay(980);
+            CalcDisplay.Text = "Loading...22%";
+            await Task.Delay(210);
+            CalcDisplay.Text = "Loading...56%";
+            await Task.Delay(670);
+            CalcDisplay.Text = "Loading...87%";
+            await Task.Delay(300);
+            CalcDisplay.Text = "Loading...98%";
+            await Task.Delay(750);
+            CalcDisplay.Text = "Loading...99%";
+            await Task.Delay(3000);
+            CalcDisplay.Text = "Loading...100%";
+            await Task.Delay(200);
+            CalcDisplay.Text = "L";
+            await Task.Delay(200);
+            CalcDisplay.Text = "Lo";
+            await Task.Delay(200);
+            CalcDisplay.Text = "Loa";
+            await Task.Delay(200);
+            CalcDisplay.Text = "Load";
+            await Task.Delay(200);
+            CalcDisplay.Text = "Loade";
+            await Task.Delay(200);
+            CalcDisplay.Text = "Loaded";
+            await Task.Delay(200);
+            CalcDisplay.Text = "Loaded!";
+            await Task.Delay(1000);
+            CalcDisplay.Text = "0";
         }
     }
 }
