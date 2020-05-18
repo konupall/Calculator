@@ -21,9 +21,11 @@ namespace CalculatorVer0._1
         Double number1 = 0;
         Double number2 = 0;
         string op = null;
+        int extend = 0;
         private void InitializeCalculator()
         {
             this.BackColor = Color.DarkMagenta;
+            this.Width = 337;
 
             string buttonName = null;
             Button button = null;
@@ -138,6 +140,10 @@ namespace CalculatorVer0._1
             {
                 result = number1 * number2;
             }
+            else if (op == "^")
+            {
+                result = Math.Pow(number1, number2);
+            }
 
             number1 = 0;
             CalcDisplay.Text = result.ToString();
@@ -157,6 +163,13 @@ namespace CalculatorVer0._1
         {
             Button button = (Button)sender;
             number1 = Convert.ToDouble(CalcDisplay.Text);
+
+            if (button.Text == "sqrt")
+            {
+                CalcDisplay.Text = Math.Sqrt(number1).ToString();
+                return;
+            }
+
             CalcDisplay.Text = string.Empty;
             op = button.Text;
         }
@@ -204,6 +217,25 @@ namespace CalculatorVer0._1
             CalcDisplay.Text = "Loaded!";
             await Task.Delay(1000);
             CalcDisplay.Text = "0";
+        }
+
+        private void buttonClear_Click(object sender, EventArgs e)
+        {
+            CalcDisplay.Text = "0";
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            if (extend == 0) // This is a really simple way of doing this
+            {
+                this.Width = 502;
+                extend += 1;
+            }
+            else if (extend == 1)
+            {
+                this.Width = 337;
+                extend -= 1;
+            }
         }
     }
 }
